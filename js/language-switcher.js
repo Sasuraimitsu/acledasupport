@@ -24,8 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // 日本語はルートまたは /pages/
             if (currentPath.startsWith('/en/') || currentPath.startsWith('/zh/')) {
                 // 他言語フォルダから日本語ルートへ
-                if (pathSegments[pathSegments.length - 2] === 'pages') { // 下層ページの場合
-                    newPath = `/pages/${fileName}`;
+                // 現在のパスが /en/pages/flow-documents.html のような場合を考慮
+                if (pathSegments.includes('pages')) {
+                     newPath = `/pages/${fileName}`;
                 } else { // トップページの場合
                     newPath = `/`;
                 }
@@ -36,7 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // 英語または中国語
             if (currentPath.startsWith('/en/') || currentPath.startsWith('/zh/')) {
                 // 他言語フォルダから他の言語フォルダへ (例: /en/flow.html -> /zh/flow.html)
-                newPath = `/${selectedLanguage}/${pathSegments[pathSegments.length - 2] === 'pages' ? 'pages/' : ''}${fileName}`;
+                // 現在のパスが /en/pages/flow-documents.html のような場合を考慮
+                if (pathSegments.includes('pages')) {
+                    newPath = `/${selectedLanguage}/pages/${fileName}`;
+                } else { // トップページの場合
+                    newPath = `/${selectedLanguage}/${fileName}`;
+                }
             } else {
                 // 日本語ルートから他言語フォルダへ (例: /index.html -> /en/index.html)
                 if (currentPath.startsWith('/pages/')) { // 下層ページの場合
@@ -48,13 +54,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // GitHub Pagesのサブディレクトリに対応するため、リポジトリ名をパスに追加
-        // 例: https://[username].github.io/acleda-bank-support/
-        const repoName = window.location.pathname.split('/')[1]; // acleda-bank-support を取得
+        const repoName = window.location.pathname.split('/')[1]; // acleda-bank-support などを取得
         let baseUrl = `/${repoName}`;
 
-        if (newPath === '/') {
-            window.location.href = baseUrl;
+        // リポジトリ名がパスに含まれていない場合は、ルートとみなす
+        // GitHub Pagesでカスタムドメインを使っている場合など
+        if (window.location.origin + '/' === window.location.href.substring(0, window.location.href.indexOf(repoName) + repoName.length + 1) && window.location.pathname.length > 1) {
+            // 通常のGitHub Pagesパスの場合
         } else {
+            baseUrl = ''; // カスタムドメインなど、リポジトリ名がURLパスに含まれない場合
+        }
+
+
+        if (newPath === '/') {
+            window.location.href = baseUrl + '/'; // ルートの場合はスラッシュで終わるように
+        } else {
+            // /acleda-bank-support/en/index.html のようにパスを構築
             window.location.href = `${baseUrl}${newPath}`;
         }
     });
