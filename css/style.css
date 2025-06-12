@@ -36,6 +36,11 @@ header .container {
     margin-bottom: 0;
 }
 
+/* .logo img { /* ロゴ削除のためコメントアウトまたは削除 */
+/* height: 40px; */
+/* margin-right: 10px; */
+/* } */
+
 .logo h1 {
     font-size: 2.2em; /* ロゴがない分、タイトルを少し大きく */
     margin: 0;
