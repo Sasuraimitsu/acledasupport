@@ -5,27 +5,31 @@
     text-align: center;
 }
 
+/* ... (既存のCSSはそのまま) ... */
+
 /* アクレダ銀行紹介セクションのサブ見出し */
 .acleda-content h3 {
     color: #004A8F;
-    font-size: 1.4em; /* h2よりは小さく、pよりは大きく */
-    margin-top: 30px;
+    font-size: 1.4em;
+    margin-top: 40px; /* 上部のマージンを増やして区切りを明確に */
     margin-bottom: 15px;
     text-align: center;
 }
 
 /* アクレダ銀行紹介セクション内のリスト */
 .acleda-content ul {
-    list-style: disc inside; /* ドットリストに */
+    list-style: disc inside;
     text-align: left;
     max-width: 800px;
-    margin: 0 auto 20px auto;
-    padding-left: 20px; /* ドットのためのパディング */
+    margin: 0 auto 20px auto; /* 下部のマージンを追加 */
+    padding-left: 20px;
 }
 
 .acleda-content ul li {
-    margin-bottom: 5px;
+    margin-bottom: 5px; /* リスト項目の間隔を調整 */
 }
+
+/* ... (既存のCSSはそのまま) ... */
 
 /* ... (既存のCSSはそのまま) ... */
 
