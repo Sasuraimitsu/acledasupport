@@ -36,11 +36,6 @@ header .container {
     margin-bottom: 0;
 }
 
-/* .logo img { /* ロゴ削除のためコメントアウトまたは削除 */
-/* height: 40px; */
-/* margin-right: 10px; */
-/* } */
-
 .logo h1 {
     font-size: 2.2em; /* ロゴがない分、タイトルを少し大きく */
     margin: 0;
@@ -103,7 +98,7 @@ nav ul li a:hover {
     font-size: 3em;
     margin-bottom: 15px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    color: #FFF; /* 追加: カンボジアの信頼をあなたに の文字色を白に */
+    color: #FFF; /* カンボジアの信頼をあなたに の文字色を白に */
 }
 
 #hero p {
@@ -167,8 +162,9 @@ h2::after {
 }
 
 /* サービス内容 */
-#services p { /* サービス内容セクション内のPタグを中央揃えにする */
-    text-align: center;
+#services p {
+    max-width: 800px; /* 必要に応じて幅を制限 */
+    margin: 0 auto 1em auto; /* 中央寄せと上下の余白 */
 }
 
 .service-links {
@@ -211,7 +207,7 @@ h2::after {
     flex-direction: column;
     align-items: center;
     gap: 25px; /* 要素間の基本ギャップ */
-    text-align: center;
+    text-align: center; /* 銀行写真とサブ見出しを中央寄せに保つため */
 }
 
 .acleda-bank-photo {
@@ -276,10 +272,15 @@ h2::after {
 
 /* カンボジア金融経済情報 */
 #economy p {
-    text-align: center;
+    text-align: left; /* 左揃えに変更 */
     max-width: 800px;
-    margin: 0 auto 30px auto;
+    margin: 0 auto 1.5em auto; /* 段落ごとの下余白 */
 }
+/* 最後の段落のみ、ボタンとの間隔を調整 */
+#economy p:last-of-type {
+    margin-bottom: 30px;
+}
+
 
 /* フッター */
 footer {
@@ -381,6 +382,13 @@ footer {
         padding-left: 15px; /* ドットのためのパディング調整 */
         padding-right: 15px;
     }
+    
+    #economy p {
+        text-align: left; /* モバイルでも左揃え */
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
 
     .sub-page-content {
         padding: 20px;
