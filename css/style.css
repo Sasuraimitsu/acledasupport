@@ -463,3 +463,19 @@ footer {
         font-size: 1.8em;
     }
 }
+/* ... (既存のCSSはそのまま) ... */
+
+/* 新しいハイライト用スタイル */
+.highlight-yellow {
+    color: #FFD700; /* ゴールドに近い黄色 */
+    font-weight: bold; /* 念のため太字も指定 */
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    /* ... (既存のモバイルCSSはそのまま) ... */
+}
+
+@media (max-width: 480px) {
+    /* ... (既存のモバイルCSSはそのまま) ... */
+}
