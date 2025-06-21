@@ -712,3 +712,37 @@ footer {
         font-size: 1.8em;
     }
 }
+/* FAQ画像のスタイル */
+.faq-image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+.faq-image-container img {
+    flex: 1;
+    max-width: 30%;
+    min-width: 150px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.image-caption {
+    width: 100%;
+    text-align: center;
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 0.5em;
+}
+
+/* 画面幅が600px以下のスマートフォン等で見た場合のスタイル */
+@media (max-width: 600px) {
+    .faq-image-container img {
+        max-width: 100%;
+    }
+}
