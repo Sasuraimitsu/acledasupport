@@ -938,3 +938,33 @@ footer {
         font-size: 0.85em;
     }
 }
+/* data-visualization 内の画像を左揃えにする */
+.data-visualization .data-image {
+    display: block; /* imgをブロック要素にする */
+    margin-left: 0;   /* 左マージンを0に設定 */
+    margin-right: auto; /* 右マージンを自動調整（中央寄せ解除） */
+    text-align: left; /* 親要素のtext-align: centerを上書き */
+}
+
+/* iframeも同様に左揃えにする場合 */
+.data-visualization .data-iframe {
+    display: block;
+    margin-left: 0;
+    margin-right: auto;
+    text-align: left;
+}
+
+
+/* レスポンシブ対応の調整 (data-image と data-iframe が左揃えになった場合の調整) */
+@media (max-width: 768px) {
+    .data-visualization .data-image,
+    .data-visualization .data-iframe {
+        /* モバイルでも基本的に左揃えを維持 */
+        margin-left: 0;
+        margin-right: auto;
+        /* 必要であれば、左右に少しパディングを入れるなどして調整 */
+        padding-left: 10px;
+        padding-right: 10px;
+        box-sizing: border-box; /* パディングを含めて幅を計算 */
+    }
+}
